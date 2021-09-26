@@ -55,6 +55,7 @@ public class Message : Object {
     public DateTime? local_time { get; set; }
     public Encryption encryption { get; set; default = Encryption.NONE; }
     private Marked marked_ = Marked.NONE;
+    public ErrorStanza? error_stanza;
     public Marked marked {
         get { return marked_; }
         set {

@@ -156,6 +156,7 @@ public class MessageProcessor : StreamInteractionModule, Object {
             if (error_stanza.condition == Xmpp.ErrorStanza.CONDITION_RECIPIENT_UNAVAILABLE && error_stanza.type_ == Xmpp.ErrorStanza.TYPE_CANCEL) return;
 
             message.marked = Message.Marked.ERROR;
+            message.error_stanza = error_stanza;
         });
 
         convert_sending_to_unsent_msgs(account);

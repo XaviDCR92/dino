@@ -241,7 +241,18 @@ public class MessageItemWidget : SizeRequestBin {
         } else if (message.direction == Message.DIRECTION_SENT && message.marked == Message.Marked.ERROR) {
             // Append "delivery failed" if there was a server error
             string error_color = Util.rgba_to_hex(Util.get_label_pango_color(label, "@error_color"));
-            markup_text += "  <span size='small' color='%s'>%s</span>".printf(error_color, _("delivery failed"));
+            markup_text += "  <span size='small' color='%s'>%s".printf(error_color, _("delivery failed"));
+
+            if (message.error_stanza != null) {
+                markup_text += " type: %s, condition: %s, text: \"%s\""
+                    .printf(message.error_stanza.type_ ?? "-", message.error_stanza.condition ?? "-",
+                        message.error_stanza.text ?? "-");
+            }
+            else {
+                markup_text += " " + _("Error description not available");
+            }
+
+            markup_text += "</span>";
             theme_dependent = true;
             additional_info = AdditionalInfo.DELIVERY_FAILED;
         }
