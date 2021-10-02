@@ -31,7 +31,7 @@ public class ConversationView : Gtk.Overlay {
 
         text_to_quote = quotes.replace(text_to_quote, -1, 0, "");
         text_to_quote = whitespace.replace(text_to_quote, -1, 0, "\n");
-        text_to_quote = "%s: %s".printf(nick, text_to_quote);
+        text_to_quote = "%s".printf(text_to_quote);
 
         text_to_quote = first_column.replace(text_to_quote, -1, 0, "\\1> \\2");
 
