@@ -218,8 +218,6 @@ emoji_activated (GtkFlowBox      *box,
   GVariant *item;
   gunichar modifier;
 
-  gtk_popover_popdown (GTK_POPOVER (chooser));
-
   ebox = gtk_bin_get_child (GTK_BIN (child));
   label = gtk_bin_get_child (GTK_BIN (ebox));
   text = g_strdup (gtk_label_get_label (GTK_LABEL (label)));
